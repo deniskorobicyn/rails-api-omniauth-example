@@ -14,6 +14,11 @@ interaction:
     command: bundle
     compose_run_options: [no-deps]
 
+  creds:
+    service: rails
+    command: bundle exec rails credentials:edit
+    compose_run_options: [no-deps]
+
   rake:
     service: rails  
     command: bundle exec rake
@@ -42,6 +47,7 @@ interaction:
     command: bash -c 'PGPASSWORD=docker psql -h pg -U docker docker'
 
 provision:
+  - mkdir bundle
   - cp .env.docker .env
   - dip bundle install
   - dip rake db:migrate

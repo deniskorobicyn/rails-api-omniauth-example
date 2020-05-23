@@ -8,9 +8,13 @@ services:
     environment:
       BUNDLE_PATH: /bundle/2.7/
       RAILS_ENV: $RAILS_ENV
+      USER: $USER
+      HOME: /app
+      EDITOR: vim
     volumes:
       - .:/app
       - ./bundle:/bundle
+    user: "1000:1000"
     depends_on:
       - pg
 

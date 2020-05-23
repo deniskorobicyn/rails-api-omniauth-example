@@ -6,19 +6,24 @@ ruby '2.7.1'
 # == core
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 
+# == users
+gem 'devise', '~> 4.7.1'
+gem 'omniauth', '~> 1.9.1'
+gem 'omniauth-google-oauth2', '~> 0.8.0'
+
 # == databases
 gem 'pg', '~> 1.2.3'
 
 # == webserver & middleware
 gem 'puma', '~> 4.1'
-gem 'rack-cors', `~> 1.1.1`
+gem 'rack-cors', '~> 1.1.1'
 
 # == utils
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   gem 'dotenv-rails', '~> 2.7.5'
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry'
 end
 
 group :development do

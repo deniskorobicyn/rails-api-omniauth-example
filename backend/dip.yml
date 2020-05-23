@@ -1,0 +1,47 @@
+version: '1'
+
+environment:
+  RAILS_ENV: development
+
+interaction:
+  sh:
+    service: rails
+    command: bash
+    compose_run_options: [no-deps]
+
+  bundle:
+    service: rails
+    command: bundle
+    compose_run_options: [no-deps]
+
+  rake:
+    service: rails  
+    command: bundle exec rake
+
+  server:
+    compose_run_options: [service-ports]
+    service: rails
+
+  rails:
+    service: rails
+    subcommands:
+      c:
+        command: bundle exec rails c
+
+      g:
+        command: bundle exec rails g
+
+  rspec:
+    service: rails
+    environment:
+      RAILS_ENV: test
+    command: bundle exec rspec
+
+  psql:
+    service: pg
+    command: bash -c 'PGPASSWORD=docker psql -h pg -U docker docker'
+
+provision:
+  - cp .env.docker .env
+  - dip bundle install
+  - dip rake db:migrate

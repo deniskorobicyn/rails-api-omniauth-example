@@ -1,6 +1,0 @@
-Creds.get()
-args
-args.unshift
-res = args.unshift
-res = args.shift
-args

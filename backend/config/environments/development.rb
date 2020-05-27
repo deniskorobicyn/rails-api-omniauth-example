@@ -12,3 +12,7 @@ Rails.application.configure do
 
   config.cache_store = :null_store
 end
+
+Rails.application.routes.default_url_options = {
+  host: ENV.fetch('DEV_HOST', 'localhost:3001')
+}

@@ -15,3 +15,8 @@ Rails.application.configure do
   config.logger = ActiveSupport::TaggedLogging.new(logger)
   config.active_record.dump_schema_after_migration = false
 end
+
+
+Rails.application.routes.default_url_options = {
+  host: ENV.fetch('HOST')
+}

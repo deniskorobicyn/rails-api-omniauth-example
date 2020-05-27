@@ -29,5 +29,11 @@ module Backend
     config.api_only = true
 
     config.active_record.schema_format = :sql
+
+    # HACK: for omniauth to work
+    # https://github.com/omniauth/omniauth#integrating-omniauth-into-your-rails-api
+    config.session_store :cookie_store, key: '_interslice_session'
+    config.middleware.use ActionDispatch::Cookies # Required for all session management
+    config.middleware.use ActionDispatch::Session::CookieStore, config.session_options
   end
 end

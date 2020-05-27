@@ -9,3 +9,7 @@ Rails.application.configure do
   config.action_controller.allow_forgery_protection = false
   config.active_support.deprecation = :stderr
 end
+
+Rails.application.routes.default_url_options = {
+  host: ENV.fetch('DEV_HOST', 'localhost:3001')
+}

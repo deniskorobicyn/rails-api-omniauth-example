@@ -5,10 +5,14 @@ ruby '2.7.1'
 
 # == core
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
+gem 'interactor-rails', '~> 2.2.1'
 
 # == users
 gem 'devise', '~> 4.7.1'
+gem 'doorkeeper', '~> 5.4.0'
 gem 'omniauth', '~> 1.9.1'
+# TODO: figure out jwt dependencies
+#gem 'doorkeeper-jwt', '~> 0.2.1'
 gem 'omniauth-google-oauth2', '~> 0.8.0'
 
 # == databases
